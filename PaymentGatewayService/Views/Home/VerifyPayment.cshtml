@@ -1,0 +1,124 @@
+﻿@model PaymentGatewayService.Models.ViewModels.PurchaseResultViewModel
+
+@{
+    ViewData["Title"] = "VerifyPayment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewData["Message"] as string;
+    var errorMessage = ViewData["ErrorMessage"] as string;
+}
+
+<h1>Internet payment gateway payment confirmation</h1>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="text-center">
+        <div class="alert alert-primary alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" style="left: 0;"></button>
+            @message
+        </div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="text-center">
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close p" data-bs-dismiss="alert" style="left: 0;"></button>
+            @errorMessage
+        </div>
+    </div>
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<hr />
+<div>
+    <div class="text-center">
+        <h4 class="mb-2">
+            <strong>Information</strong>
+        </h4>
+    </div>
+    <form asp-action="RegisteringInformation" class="border border-dark rounded rounded-3 p-3" method="post">
+        <dl class="row mb-2">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ResCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ResCode)
+                @Html.HiddenFor(model => model.ResCode)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Token)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Token)
+                @Html.HiddenFor(model => model.Token)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.OrderId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OrderId)
+                @Html.HiddenFor(model => model.OrderId)
+            </dd>
+        </dl>
+        <div class="clearfix">
+            <div class="float-end">
+                <input type="submit" value="Registering" class="btn btn-primary px-4" />
+            </div>
+        </div>
+    </form>
+</div>
+
+@if (Model.VerifyResultData != null)
+{
+    <div class="text-center">
+        <h4 class="mb-2 mt-3">
+            <strong>Information received by Verify method</strong>
+        </h4>
+    </div>
+    <div class="border border-dark rounded rounded-3">
+        <dl class="row mb-2 p-3">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.VerifyResultData!.ResCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.VerifyResultData!.ResCode)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.VerifyResultData!.Amount)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.VerifyResultData!.Amount)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.VerifyResultData!.OrderId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.VerifyResultData!.OrderId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.VerifyResultData!.RetrivalRefNo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.VerifyResultData!.RetrivalRefNo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.VerifyResultData!.SystemTraceNo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.VerifyResultData!.SystemTraceNo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.VerifyResultData!.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.VerifyResultData!.Description)
+            </dd>
+        </dl>
+    </div>
+}
+
+<div class="float-end">
+    <a asp-action="Index">Back to List</a>
+</div>

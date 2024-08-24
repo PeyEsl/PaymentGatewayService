@@ -1,0 +1,98 @@
+﻿@model IEnumerable<PaymentGatewayService.Models.ViewModels.PaymentViewModel>
+
+@{
+    ViewData["Title"] = "Payments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var errorMessage = ViewData["ErrorMessage"] as string;
+}
+
+<h1>Payment List</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="text-center">
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close p" data-bs-dismiss="alert" style="left: 0;"></button>
+            @errorMessage
+        </div>
+    </div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentMethod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TransactionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentGatewayTrackingCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserIpAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderId)
+                    </td>
+                    <td>
+                        @string.Format("{0:n0} ريال", item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentMethod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TransactionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentGatewayTrackingCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserIpAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="text-center">
+        <div class="alert alert-danger">
+            لیست پرداخت خالی است.
+        </div>
+    </div>
+}
+
+<div class="float-end">
+    <a asp-action="Index">Back to Home</a>
+</div>
