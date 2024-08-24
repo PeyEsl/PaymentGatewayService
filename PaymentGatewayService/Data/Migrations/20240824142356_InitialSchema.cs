@@ -57,7 +57,7 @@ namespace PaymentGatewayService.Migrations
             migrationBuilder.InsertData(
                 table: "Settings",
                 columns: new[] { "Id", "CreatedDate", "GatewayName", "MerchantId", "PaymentRequestUrl", "PurchasePageUrl", "PurchaseUrl", "TerminalId", "TerminalKey", "VerifyPaymentUrl" },
-                values: new object[] { 1, new DateTime(2024, 8, 24, 17, 53, 55, 823, DateTimeKind.Local).AddTicks(4800), "Sadad", "1818", "api/v0/Request/PaymentRequest", "https://sandbox.banktest.ir/melli/sadad.shaparak.ir/VPG", "Purchase", "53C20VIY", "NzMyMGMyZjA0MDFjYjg2NWU4OGVhMWUy", "api/v0/Advice/Verify" });
+                values: new object[] { 1, new DateTime(2024, 8, 24, 17, 53, 55, 823, DateTimeKind.Local).AddTicks(4800), "Sadad", "YOUR_MERCHANT_ID", "api/v0/Request/PaymentRequest", "https://sandbox.banktest.ir/melli/sadad.shaparak.ir/VPG", "Purchase", "YOUR_TERMINAL_ID", "YOUR_MERCHANT_KEY", "api/v0/Advice/Verify" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
