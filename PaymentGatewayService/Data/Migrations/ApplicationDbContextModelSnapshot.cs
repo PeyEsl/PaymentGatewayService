@@ -144,12 +144,12 @@ namespace PaymentGatewayService.Migrations
                             Id = 1,
                             CreatedDate = new DateTime(2024, 8, 24, 17, 53, 55, 823, DateTimeKind.Local).AddTicks(4800),
                             GatewayName = "Sadad",
-                            MerchantId = "1818",
+                            MerchantId = "YOUR_MERCHANT_ID",
                             PaymentRequestUrl = "api/v0/Request/PaymentRequest",
                             PurchasePageUrl = "https://sandbox.banktest.ir/melli/sadad.shaparak.ir/VPG",
                             PurchaseUrl = "Purchase",
-                            TerminalId = "53C20VIY",
-                            TerminalKey = "NzMyMGMyZjA0MDFjYjg2NWU4OGVhMWUy",
+                            TerminalId = "YOUR_TERMINAL_ID",
+                            TerminalKey = "YOUR_MERCHANT_KEY",
                             VerifyPaymentUrl = "api/v0/Advice/Verify"
                         });
                 });
