@@ -11,9 +11,9 @@ namespace PaymentGatewayService.Data
             builder.HasData(new Setting
             {
                 Id = 1,
-                MerchantId = "1818",
-                TerminalId = "53C20VIY",
-                TerminalKey = "NzMyMGMyZjA0MDFjYjg2NWU4OGVhMWUy",
+                MerchantId = "YOUR_MERCHANT_ID",
+                TerminalId = "YOUR_TERMINAL_ID",
+                TerminalKey = "YOUR_MERCHANT_KEY",
                 PaymentRequestUrl = "api/v0/Request/PaymentRequest",
                 VerifyPaymentUrl = "api/v0/Advice/Verify",
                 PurchaseUrl = "Purchase",
